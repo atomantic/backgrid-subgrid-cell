@@ -1,0 +1,24 @@
+{
+  "name": "backgrid-subgrid-cell",
+  "version": "0.2.1",
+  "description": "An extension for Backgrid.js that allows users to play with sub-tables.",
+  "main": "subgrid-cell/backgrid-subgrid-cell.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomantic/backgrid-subgrid-cell.git"
+  },
+  "keywords": [
+    "backgrid",
+    "subgrid",
+    "backbone"
+  ],
+  "author": "Adam Eivy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atomantic/backgrid-subgrid-cell/issues"
+  },
+  "homepage": "https://github.com/atomantic/backgrid-subgrid-cell#readme"
+}
