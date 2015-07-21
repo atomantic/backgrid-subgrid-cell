@@ -1,10 +1,11 @@
 {
-  "name": "backgrid-subgrid-cell",
+  "name": "backgrid-subgrid-cell-maintained",
   "version": "0.2.1",
-  "homepage": "https://github.com/DJCrossman/backgrid-subgrid-cell",
+  "homepage": "https://github.com/atomantic/backgrid-subgrid-cell",
   "description": "An extension for Backgrid.js that allows users to play with sub-tables.",
   "authors": [
-    "David Crossman"
+    "David Crossman",
+    "Adam Eivy"
   ],
   "keywords": [
     "backgrid",
