@@ -137,7 +137,7 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
   initialize: function (options) {
     this.state = "collasped";
     requireOptions(options, ["model", "column"]);
-    requireOptions(options.column.attributes, ["optionValues"]);
+    requireOptions(options.column.attributes, ["subcolumns"]);
     requireTypeOrder(options.column, "subgrid", 0 );
 
     this.subcolumns = options.subcolumns;
