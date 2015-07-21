@@ -15,10 +15,16 @@
     "subgrid",
     "backbone"
   ],
-  "author": "Adam Eivy",
+  "authors": [
+    "David Crossman",
+    "Adam Eivy"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/atomantic/backgrid-subgrid-cell/issues"
   },
-  "homepage": "https://github.com/atomantic/backgrid-subgrid-cell#readme"
+  "homepage": "https://github.com/atomantic/backgrid-subgrid-cell#readme",
+  "dependencies": {
+    "backgrid": "~0.3.0"
+  }
 }
