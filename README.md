@@ -7,7 +7,7 @@ Backgrid-subgrid-cell.js offers the user a choice of organizing their data so th
 ## Advantages
 
 - Like Backgrid.js, Solid foundation. Based on Backbone.js.
-- Like Backgrid.js, Semantic and easily stylable. 
+- Like Backgrid.js, Semantic and easily stylable.
 - Like Backgrid.js, Easy things are easy, hards things possible.
 - Like Backgrid.js, Components are just simple Backbone View classes, customization is easy.
 - Like Backgrid.js, Goodish documentation.
@@ -21,12 +21,12 @@ Before you jump into this extension
 ## Example
 ```
 // define the child columns
-var subcolumns = [ 
+var subcolumns = [
     { name: "id", label: "", cell: "integer"},
-    { name: "name", label: "Name", cell: "string"}, 
+    { name: "name", label: "Name", cell: "string"},
     { name: "pending", label: "Pending Invoices Status", cell: integer"},
     { name: "billtype", label: "Billing Type", cell: "string"},
-    { name: "totcost", label: "Total Cost", cell: "number"}, 
+    { name: "totcost", label: "Total Cost", cell: "number"},
     { name: "totprice", label: "Total Price", cell: "number"}];
 // define the parent columns
 var columns = [
@@ -40,7 +40,7 @@ var columns = [
     { name: "select", label: "", cell: "boolean"}];
 ```
 
-The subgrid is called with the cell type: _subgrid_. A subgrid cell requires the user to supply both a subcolumn and a subcollection (similiar to how a grid requires a column and collection). 
+The subgrid is called with the cell type: _subgrid_. A subgrid cell requires the user to supply both a subcolumn and a subcollection (similiar to how a grid requires a column and collection).
 ```
 // intialize model
 var Territory = Backbone.Model.extend({});
@@ -74,7 +74,7 @@ var WorldView = Backbone.View.extend({
 });
 var world = new WorldView();
 ```
-Boom! This initializes a grid with subgrid. 
+Boom! This initializes a grid with subgrid.
 
 ## Result
 Check it out [here](http://DJCrossman.github.com/backgrid-subgrid-cell//).

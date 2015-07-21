@@ -68,11 +68,11 @@ var SubgridRow = Backgrid.SubgridRow = Backbone.View.extend({
     this.el.id = this.model.get("id");
     requireOptions(options, ["columns", "model"]);
     this.columns = options.columns;
-    var subcolumns = this.subcolumns = options.model.get("subcolumns");
+    var subcolumns = this.subcolumns;
     if (!(subcolumns instanceof Backgrid.Columns)) {
-      subcolumns = this.subcolumns = this.model.subcolumns = new Backgrid.Columns(subcolumns);
+      subcolumns = this.subcolumns = new Backgrid.Columns(subcolumns);
     }
-    var subcollection = this.subcollection = options.model.get("subcollection");
+    var subcollection = this.subcollection = options.model.get(this.subCollectionKey);
     if (!(subcollection instanceof Backbone.Collection)) {
       subcollection = this.subcollection = this.model.subcollection = new SubCollection(subcollection);
     }
@@ -120,6 +120,8 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     return (iconOptions);
   },
   optionValues: undefined,
+  subcolumns: undefined,
+  subCollectionKey: 'subcollection',
 
   /**
      Initializer.
@@ -136,8 +138,10 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     this.state = "collasped";
     requireOptions(options, ["model", "column"]);
     requireOptions(options.column.attributes, ["optionValues"]);
-    this.model.set("subcolumns", options.column.get("optionValues"), {silent: true});
     requireTypeOrder(options.column, "subgrid", 0 );
+
+    this.subcolumns = options.subcolumns;
+    this.subCollectionKey = options.subCollectionKey;
 
     this.column = options.column;
     if (!(this.column instanceof Backgrid.Column)) {
@@ -150,7 +154,6 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     Renders a collasped view.
   */
   render: function () {
-    //this.$el.empty().text(this.formatter.fromRaw(this.model.get(this.column.get("name"))));
     $(this.el).append(this.icon());
     return this;
   },
@@ -178,7 +181,9 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     // and saved to server
     //this.model.set("subgrid", this.subrow.subgrid);
     // silently add this so we don't save to the server when adding the subgrid
-    this.model.set("subcollection", this.subrow.subcollection, {silent:true});
+    //if(!this.subCollectionKey){
+      //this.model.set(this.subCollectionKey, this.subrow.subcollection, {silent:true});
+    //}
     $(this.el).append(this.icon());
   },
 /**
