@@ -1,6 +1,6 @@
 {
   "name": "backgrid-subgrid-cell",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/DJCrossman/backgrid-subgrid-cell",
   "description": "An extension for Backgrid.js that allows users to play with sub-tables.",
   "authors": [
