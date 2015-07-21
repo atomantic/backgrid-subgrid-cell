@@ -46,7 +46,7 @@ var SubgridRow = Backgrid.SubgridRow = Backbone.View.extend({
   tagName: "tr",
 
   className: "backgrid-subgrid-row",
-  
+
   submodel: Backbone.Model.extend({}),
 
   /**
@@ -62,7 +62,7 @@ var SubgridRow = Backgrid.SubgridRow = Backbone.View.extend({
     var thisView = this;
     var GridColumnView = Backbone.View.extend({ tagName: "td" });
     var SubCollection  = Backbone.Collection.extend({ model: this.submodel });
-    this.gridColumnView = new GridColumnView({}); 
+    this.gridColumnView = new GridColumnView({});
     this.sideColumnView = new GridColumnView({});
 
     this.el.id = this.model.get("id");
@@ -92,7 +92,7 @@ var SubgridRow = Backgrid.SubgridRow = Backbone.View.extend({
     this.gridColumnView.el.colSpan = (this.columns.length - 1);
     // Appends the first  empty column
     $(this.el).append(this.sideColumnView.render().$el);
-    // Appends the subgrid column that spans the rest of the table 
+    // Appends the subgrid column that spans the rest of the table
     $(this.el).append(this.gridColumnView.render().$el);
     // Appends the Subgrid
     this.gridColumnView.$el.append(this.subgrid.render().$el);
@@ -116,7 +116,7 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     var iconOptions = "+";
     if(this.state == "expanded")
       iconOptions = "-";
-    
+
     return (iconOptions);
   },
   optionValues: undefined,
@@ -150,7 +150,7 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
     Renders a collasped view.
   */
   render: function () {
-    //this.$el.empty().text(this.formatter.fromRaw(this.model.get(this.column.get("name"))));  
+    //this.$el.empty().text(this.formatter.fromRaw(this.model.get(this.column.get("name"))));
     $(this.el).append(this.icon());
     return this;
   },
@@ -160,7 +160,7 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
   },
 /**
   Checks the current state of the cell, either:
-  appends another row for the subgrid and appends the grid to the row 
+  appends another row for the subgrid and appends the grid to the row
   or removes the row from the parent grid,
   and saves the current data the model.
 */
@@ -174,18 +174,21 @@ var SubgridCell = Backgrid.SubgridCell = Backgrid.Cell.extend({
       this.state = "collasped";
       this.subrow.remove();
     }
-    this.model.set("subgrid", this.subrow.subgrid);
-    this.model.set("subcollection", this.subrow.subcollection);
+    // removing as this drops a DOM node in the model, which then can't be serialized
+    // and saved to server
+    //this.model.set("subgrid", this.subrow.subgrid);
+    // silently add this so we don't save to the server when adding the subgrid
+    this.model.set("subcollection", this.subrow.subcollection, {silent:true});
     $(this.el).append(this.icon());
   },
 /**
   Binds the remove function with the row when a model is removed.
-*/  
+*/
   clearSubgrid: function () {
     var thisView = this;
     // TO DO : Clean up code
-    $(".backgrid-subgrid-row").filter(function() { 
-      return ($(this).attr("id") == thisView.model.get('id')); 
+    $(".backgrid-subgrid-row").filter(function() {
+      return ($(this).attr("id") == thisView.model.get('id'));
     }).remove()
   },
   remove: function () {
